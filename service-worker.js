@@ -3,9 +3,9 @@ self.addEventListener('install', (event) => {
       caches.open('calculator-cache').then((cache) => {
           return cache.addAll([
               '/',
-              '/calc.html',
-              '/calc.css',
-              '/calc.js',
+              '/index.html',
+              '/styles.css',
+              '/script.js',
               '/manifest.json',
               '/icon-192x192.png',
               '/icon-512x512.png'
