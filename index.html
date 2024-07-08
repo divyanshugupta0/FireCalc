@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Calculator</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    <header class="header">
+        Fire Calculator
+    </header>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display"disabled>
+        </div>
+        <div class="buttons">
+            <button class="btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="appendValue('/')">/</button>
+            <button class="btn" onclick="appendValue('*')">*</button>
+            <button class="btn" onclick="deleteLast()">←</button>
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn" onclick="appendValue('-')">-</button>
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn" onclick="appendValue('+')">+</button>
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn" onclick="calculate()">=</button>
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn" onclick="toggleHistory()">H</button>
+            <button class="btn" onclick="shareCalculator()">Share</button>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleHistory()">&times;</span>
+            <h2>History</h2>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        powered by: FireFly
+    </footer>
+
+    <script src="calc.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, (error) => {
+                console.log('ServiceWorker registration failed: ', error);
+            });
+        }
+    </script>
+</body>
+</html>
